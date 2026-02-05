@@ -1,6 +1,6 @@
 :root {
   --primary: #ff0409;     /* vermelho vivo para destaque */
-  --secondary: #14ad00;   /* laranja quente para botões secundários */
+  --secondary: #14ad00;   /* verde para WhatsApp */
   --dark: #121212;        /* fundo geral escuro */
   --light: #1f1f1f;       /* cards e seções mais claras */
   --text: #e5e5e5;        /* texto principal claro */
@@ -55,7 +55,6 @@ nav {
   align-items: center;
 }
 
-
 nav a {
   margin-left: 20px;
   text-decoration: none;
@@ -75,7 +74,6 @@ nav a:hover {
 }
 
 /* HERO */
-/* HERO FLEX */
 .hero {
   min-height: 90vh;
   display: flex;
@@ -129,44 +127,6 @@ nav a:hover {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
-}
-
-/* RESPONSIVO */
-@media (max-width: 992px) {
-  .hero-flex {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero-image img {
-    width: 200px;
-    height: 200px;
-  }
-
-  .hero-text h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-text p {
-    font-size: 1rem;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-}
-
-
-/* ANIMAÇÃO */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* BOTÕES */
@@ -238,7 +198,6 @@ nav a:hover {
   max-width: 300px;
   box-shadow: 0 12px 30px rgba(0,0,0,0.6);
   transition: transform 0.3s, box-shadow 0.3s;
-
   display: flex;
   gap: 25px;
   flex-wrap: wrap;
@@ -321,6 +280,30 @@ button {
 }
 
 /* RESPONSIVO */
+@media (max-width: 992px) {
+  .hero-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 768px) {
   nav {
     display: none;
@@ -330,6 +313,7 @@ button {
     width: 100%;
     background: #1b1b1b;
     flex-direction: column;
+    z-index: 999;
   }
 
   nav.active {
@@ -337,8 +321,8 @@ button {
   }
 
   nav a {
+    margin: 0;
     padding: 15px;
-    border-bottom: 1px solid #333;
     text-align: center;
   }
 
@@ -346,23 +330,16 @@ button {
     display: block;
   }
 
+  /* Cards centralizados no mobile */
   .cards {
     flex-direction: column;
     gap: 20px;
-    margin: 0 auto;
-
+    align-items: center;
   }
+
   .hero {
     min-height: auto;
     padding: 120px 0 60px;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
   }
 
   .hero-buttons {
