@@ -50,6 +50,12 @@ body {
   letter-spacing: 1px;
 }
 
+nav {
+  display: flex;
+  align-items: center;
+}
+
+
 nav a {
   margin-left: 20px;
   text-decoration: none;
@@ -327,6 +333,7 @@ button {
   nav a {
     padding: 15px;
     border-bottom: 1px solid #333;
+    text-align: center;
   }
 
   .menu-toggle {
