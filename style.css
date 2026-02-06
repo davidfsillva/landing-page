@@ -357,4 +357,15 @@ button {
     flex-direction: column;
     gap: 12px;
   }
+
+  .header-content {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .header span {
+  margin: 0;
+  font-size: 0.75rem;
+  text-align: center;
+  }
 }
