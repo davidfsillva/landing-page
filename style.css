@@ -73,11 +73,12 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 100px; /* 👈 empurra o conteúdo pra baixo */
   position: relative;
   background: linear-gradient(rgba(18,18,18,0.85), rgba(18,18,18,0.85)),
               url("https://images.unsplash.com/photo-1599058917212-d750089bc07d") center/cover no-repeat;
-  color: var(--text);
 }
+
 
 .hero-flex {
   display: flex;
@@ -137,7 +138,12 @@ nav a:hover {
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(150, 150, 150, 0.4);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+.btn-header {
+    margin-left: 20px; /* empurra pra direita */
+
 }
 
 .primary {
@@ -145,7 +151,7 @@ nav a:hover {
 }
 
 .primary:hover {
-  background: #e03237;
+  background: var(--primary);
 }
 
 .whatsapp {
