@@ -306,20 +306,20 @@ button {
 
 @media (max-width: 768px) {
   nav {
-    display: none;
+    display: none; /* Escondido por padrão */
+    flex-direction: column;
     position: absolute;
     top: 70px;
     left: 0;
     width: 100%;
     background: #1b1b1b;
-    flex-direction: column;
     z-index: 999;
   }
 
   nav.active {
-    display: flex;
+    display: flex !important; 
   }
-
+  
   nav a {
     margin: 0;
     padding: 15px;
@@ -328,6 +328,9 @@ button {
 
   .menu-toggle {
     display: block;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1001;
   }
 
   .menu-toggle.open i::before {
