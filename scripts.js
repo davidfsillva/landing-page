@@ -3,28 +3,27 @@
 // ==============================
 const menuToggle = document.getElementById("menuToggle");
 const nav = document.getElementById("nav");
-
-// Ícones do menu
-const ICON_OPEN = "☰"; // ou qualquer emoji/símbolo
-const ICON_CLOSE = "✕";
+const icon = menuToggle.querySelector("i"); // Seleciona o ícone interno
 
 menuToggle.addEventListener("click", () => {
-  nav.classList.toggle("active");
-  menuToggle.classList.toggle("open");
+    nav.classList.toggle("active");
+    menuToggle.classList.toggle("open");
 
-  // Alterna o ícone
-  menuToggle.textContent = menuToggle.classList.contains("open") ? ICON_CLOSE : ICON_OPEN;
+    // Alterna a classe do ícone do FontAwesome entre barras e X
+    if (menuToggle.classList.contains("open")) {
+        icon.classList.replace("fa-bars", "fa-xmark");
+    } else {
+        icon.classList.replace("fa-xmark", "fa-bars");
+    }
 });
 
 // FECHAR MENU AO CLICAR EM LINK (mobile)
 nav.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    if (nav.classList.contains("active")) {
-      nav.classList.remove("active");
-      menuToggle.classList.remove("open");
-      menuToggle.textContent = ICON_OPEN;
-    }
-  });
+    link.addEventListener("click", () => {
+        nav.classList.remove("active");
+        menuToggle.classList.remove("open");
+        icon.classList.replace("fa-xmark", "fa-bars");
+    });
 });
 
 // ==============================
@@ -33,35 +32,31 @@ nav.querySelectorAll("a").forEach(link => {
 const form = document.getElementById("leadForm");
 
 form.addEventListener("submit", e => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const nomeInput = form.querySelector('input[type="text"]');
-  const whatsappInput = form.querySelector('input[type="tel"]');
+    const nomeInput = form.querySelector('input[type="text"]');
+    const whatsappInput = form.querySelector('input[type="tel"]');
 
-  const nome = nomeInput.value.trim();
-  const whatsapp = whatsappInput.value.trim().replace(/\D/g, ""); // apenas números
+    const nome = nomeInput.value.trim();
+    const whatsappCliente = whatsappInput.value.trim();
 
-  // Validação básica
-  if (!nome || !whatsapp) {
-    alert("Por favor, preencha todos os campos!");
-    return;
-  }
+    // Validação básica
+    if (!nome || !whatsappCliente) {
+        alert("Por favor, preencha todos os campos!");
+        return;
+    }
 
-  if (!/^\d{10,15}$/.test(whatsapp)) {
-    alert("Digite um número de WhatsApp válido (somente números, DDD + número).");
-    return;
-  }
+    // --- CONFIGURAÇÃO DO WHATSAPP ---
+    // Substitua pelo SEU número (DDI + DDD + Número) sem espaços ou traços
+    const meuNumero = "5599999999999"; 
+    
+    const mensagem = `Olá Lucas! Meu nome é ${nome} (Tel: ${whatsappCliente}) e gostaria de agendar uma aula experimental.`;
+    const linkWhatsApp = `https://wa.me/${meuNumero}?text=${encodeURIComponent(mensagem)}`;
 
-  // Cria link do WhatsApp
-  const mensagem = `Olá, meu nome é ${nome} e quero agendar uma aula experimental.`;
-  const linkWhatsApp = `https://wa.me/${whatsapp}?text=${encodeURIComponent(mensagem)}`;
+    // Feedback visual e Redirecionamento
+    alert(`Obrigado, ${nome}! Redirecionando para o WhatsApp...`);
+    window.open(linkWhatsApp, "_blank");
 
-  // Abre WhatsApp em nova aba
-  window.open(linkWhatsApp, "_blank");
-
-  // Feedback visual
-  alert(`Obrigado, ${nome}! Você será redirecionado para o WhatsApp.`);
-
-  // Reseta formulário
-  form.reset();
+    // Reseta formulário
+    form.reset();
 });

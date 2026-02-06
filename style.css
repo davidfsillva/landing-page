@@ -68,9 +68,9 @@ nav a:hover {
 }
 
 .menu-toggle {
-  display: none;
-  font-size: 26px;
-  cursor: pointer;
+  position: relative;
+  z-index: 1001; 
+  color: var(--text);
 }
 
 /* HERO */
@@ -329,6 +329,10 @@ button {
   .menu-toggle {
     display: block;
   }
+
+  .menu-toggle.open i::before {
+  content: "\f00d"; 
+}
 
   /* Cards centralizados no mobile */
   .cards {
